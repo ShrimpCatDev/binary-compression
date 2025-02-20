@@ -1,4 +1,3 @@
-//% color="#ffb762"
 namespace compression{
 let output = ""
 let binary_number = ""
@@ -19,7 +18,7 @@ export function decompressBinaryString (string: string) {
     return output
 }
 //% block
-export function compressBinaryString (string: string) {
+export function compressBinaryString(string: string) {
     charIndex = 0
     output = ""
     while (charIndex < string.length - 1) {
@@ -29,7 +28,12 @@ export function compressBinaryString (string: string) {
             lenIndex += 1
             charIndex += 1
         }
-        output = "" + output + selectedChar + lenIndex
+        if (lenIndex < 10) {
+            output = "" + output + selectedChar + lenIndex
+        } else {
+            output = "" + output + selectedChar + lenIndex / 2
+            output = "" + output + selectedChar + lenIndex / 2
+        }
     }
     return output
 }
